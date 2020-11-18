@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './PageComponents/App';
 import reportWebVitals from './reportWebVitals';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import Header from './components/Header';
+import SearchPage from './PageComponents/SearchPage';
+import PriorityTasks from './PageComponents/PriorityTasks';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Header />
+    <Switch>
+      <Route path="/Home"><PriorityTasks/></Route>
+      <Route path="/Search"><SearchPage/></Route>
+      <Route path="/Add"><App /></Route>
+    </Switch>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
