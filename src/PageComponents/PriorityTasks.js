@@ -3,6 +3,7 @@ import TaskCard from '../components/TaskCard';
 import MaterialTaskCard from '../components/materialTaskCard';
 import axios from 'axios';
 import DisplayTasks from '../components/DisplayTasks';
+import './PriorityTasks.scss'
 
 function PriorityTasks(props) {
 
@@ -18,8 +19,8 @@ function PriorityTasks(props) {
         let tasks = result.data.body;
         //console.log(tasks) ---its running infinitely
         const priorityTodoArray = tasks.filter(task => {
-            let createdBefore = Math.floor((new Date() - new Date(task.creationTime)) / (60 * 60 * 1000));
-            return task.completionTime <= (createdBefore * 2)
+            let createdBefore = Math.round((new Date()-Date.parse(task.creationTime)) / (60 * 60 * 1000));
+            return task.completionTime <= (createdBefore * 2) && task.status==="Under Progress"
         });
 
         setTodos(priorityTodoArray);
@@ -27,13 +28,12 @@ function PriorityTasks(props) {
 
     return (
         <div className="PriorityTasks">
-            <ul style={{ listStyleType: "none" }}>
+            <ul>
                 {todos.map(todo => (
                     // <li><TaskCard task={todo.task} status={todo.status} /></li>
-                    <li><MaterialTaskCard todo={todo} task={todo.task} status={todo.status} progress={Math.floor(new Date()-new Date(todo.creationTime)/(60*60*1000))} totalTime={todo.completionTime}/></li>
+                    <li><MaterialTaskCard todo={todo} task={todo.task} status={todo.status} progress={Math.round(new Date()-Date.parse(todo.creationTime))} totalTime={todo.completionTime}/></li>
                 ))}
             </ul>
-            {/* <DisplayTasks/> */}
         </div>
     );
 }

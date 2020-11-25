@@ -1,9 +1,12 @@
-// .nav-buttons{
-//     background-color: aliceblue;
-//     color: rgb(197, 116, 9);
-//     text-decoration-color: white;
+.nav-buttons{
+    color: white;
+    text-decoration: none;
 
-//     a:link{
-//         color:white;
-//     }
-// }
+    .button{
+        // background-color: rgba(245, 245, 245, 0.123);
+        margin-left: 10px;
+        border: solid 1px white;
+        width: 30px;
+        text-align: center;
+    }
+}

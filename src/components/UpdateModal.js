@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import Modal from 'react-modal';
+import './UpdateModal.scss'
 
 function UpdateModal(props) {
 
     const [input, setInput] = useState(props.task)
 
     return (
-        <Modal isOpen={props.modalIsOpen} onRequestClose={() => props.setModalIsOpen(false)}>
+        <Modal isOpen={props.modalIsOpen} onRequestClose={() => props.setModalIsOpen(false)} className="Modal">
             <h2>Update Your Task</h2>
             <form>
-                <input value={input} onChange={event => setInput(event.target.value)} />
+                <div>
+                    <input className="inputBox" value={input} onChange={event => setInput(event.target.value)} />
+                </div>
 
-                <button type="submit" onClick={() => {
+                <button className="button" type="submit" onClick={() => {
                     axios.put(`http://localhost:1448/Todo/updateTodo?OldTask=${props.task}&updatedTask=${input}`)
                         .then(
                             res => console.log(res)
@@ -21,9 +24,9 @@ function UpdateModal(props) {
                             err => console.log(err)
                         );
                     props.setModalIsOpen(false);
-                }}>update</button>
+                }}>Update</button>
 
-                <button onClick={() => props.setModalIsOpen(false)}>cancel</button>
+                <button className="button" onClick={() => props.setModalIsOpen(false)}>Cancel</button>
             </form>
 
         </Modal>

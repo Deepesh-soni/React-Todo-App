@@ -22,7 +22,9 @@ export default function SimpleSelect(props) {
 
   const handleChange = (event) => {
     setStatus(event.target.value);
-    updateStatus(event.target.value);
+    if(props.updateStatus){
+      updateStatus(event.target.value);
+    }
   };
 
   return (

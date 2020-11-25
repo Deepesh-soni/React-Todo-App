@@ -1,0 +1,30 @@
+$primary-color: #3F51B5;
+
+.FormikAddTaskForm{
+    width:40%;
+    border: 5px solid $primary-color;
+    margin: 20px auto;
+    text-align: center;
+
+    .fields{
+        margin: 20px;
+    }
+
+    .inputField{
+        width: 70%;
+        height: 20px;
+        margin: 5px;
+    }
+
+    .button{
+        margin: 5px;
+        width: 30%;
+        height: 30px;
+        border-radius: 12px;
+        transition-duration: 30ms;
+
+        &:hover{
+            width: 35%;
+        }
+    }
+}

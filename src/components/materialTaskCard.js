@@ -9,9 +9,8 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
+import { blue,red,green } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import DeleteIcon from '@material-ui/icons/Delete';
 import UpdateModal from './UpdateModal'
 import EditIcon from '@material-ui/icons/Edit';
@@ -24,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345,
         marginTop: 10,
-        backgroundColor: red[100],
+        backgroundColor: blue[100],
+        borderRadius: 15,
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -51,16 +51,14 @@ export default function MaterialTaskCard(props) {
         setExpanded(!expanded);
     };
 
-    var avatarToBeShown = <Avatar aria-label="recipe" className={classes.avatar}>-</Avatar>;
-
     function renderAvatar(status) {
-        // if(status.equals("Completed")){
-        //     return <Avatar aria-label="recipe" className={classes.avatar}>C</Avatar>
-        // }else if(status.equals("Under Progress")){
-        //     return <Avatar aria-label="recipe" className={classes.avatar}>U</Avatar>
-        // }else if(status.equals("Failed")){
-        //     return <Avatar aria-label="recipe" className={classes.avatar}>F</Avatar>
-        // }
+        if(status==="Completed"){
+            return <Avatar aria-label="recipe" className={classes.avatar} style={{backgroundColor: green[400]}}>C</Avatar>
+        }else if(status==="Under Progress"){
+            return <Avatar aria-label="recipe" className={classes.avatar} style={{backgroundColor: blue[400]}}>U</Avatar>
+        }else if(status==="Failed"){
+            return <Avatar aria-label="recipe" className={classes.avatar} style={{backgroundColor: red[400]}}>F</Avatar>
+        }
 
         return <Avatar aria-label="recipe" className={classes.avatar}>-</Avatar>;
     };
@@ -83,11 +81,6 @@ export default function MaterialTaskCard(props) {
             <Card className={classes.root}>
                 <CardHeader
                     avatar={renderAvatar(props.status)}
-                    action={
-                        <IconButton aria-label="settings">
-                            <MoreVertIcon />
-                        </IconButton>
-                    }
                     title={props.task}
                 />
                 <CardContent>
@@ -110,7 +103,6 @@ export default function MaterialTaskCard(props) {
                     </IconButton>
                     <IconButton aria-label="edit">
                         <EditIcon onClick={() => setModalIsOpen(true)} />
-                        {/* <EditIcon onClick={() =>{}} /> */}
                     </IconButton>
                     <IconButton
                         className={clsx(classes.expand, {

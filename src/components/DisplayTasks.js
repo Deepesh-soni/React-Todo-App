@@ -8,7 +8,7 @@ function DisplayTasks(props) {
 
     const [todos, setTodos] = useState([]);
     //const status="Completed";
-    console.log(props.requiredStatus);
+    // console.log(props.requiredStatus);
 
     useEffect(async () => {
         let result = await axios({

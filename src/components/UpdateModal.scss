@@ -1,0 +1,25 @@
+.Modal{
+    text-align: center;
+    margin: auto;
+    width: 600px;
+    height: 200px;
+
+    .inputBox{
+        width: 70%;
+        height: 20px;
+        margin: 5px;
+    }
+
+    .button{
+        margin: 5px;
+        width: 30%;
+        height: 30px;
+        border-radius: 12px;
+        transition-duration: 300ms;
+
+        &:hover{
+            width: 35%;
+        }
+
+    }
+}
