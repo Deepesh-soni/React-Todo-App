@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.scss';
 import MaterialTaskCard from '../components/materialTaskCard';
-// import AddTaskForm from '../components/AddTaskForm';
 import axios from 'axios';
 import FormikAddTaskForm from '../components/FormikAddTaskForm';
 
